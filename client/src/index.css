@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* Custom editor theme colors */
+  --editor-bg: hsl(220, 13%, 11%);
+  --editor-panel: hsl(220, 13%, 15%);
+  --editor-border: hsl(220, 13%, 22%);
+  --editor-hover: hsl(220, 13%, 18%);
+  
+  /* Brand colors */
+  --brand-primary: hsl(142, 76%, 36%);
+  --brand-secondary: hsl(217, 91%, 60%);
+  --brand-success: hsl(142, 76%, 48%);
+  --brand-warning: hsl(45, 93%, 47%);
+  --brand-error: hsl(0, 85%, 60%);
+  
+  /* Text colors */
+  --text-primary: hsl(210, 40%, 95%);
+  --text-secondary: hsl(215, 20%, 65%);
+  --text-muted: hsl(215, 15%, 50%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(33, 38, 45, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(48, 54, 61, 0.8);
+  }
+
+  .progress-bar {
+    background: linear-gradient(90deg, hsl(var(--brand-primary)) 0%, hsl(var(--brand-success)) 100%);
+  }
+
+  .code-editor {
+    background: hsl(var(--editor-bg));
+    border: 1px solid hsl(var(--editor-border));
+  }
+
+  .syntax-highlight .token.comment { 
+    color: hsl(var(--text-secondary)); 
+  }
+  
+  .syntax-highlight .token.string { 
+    color: hsl(217, 100%, 80%); 
+  }
+  
+  .syntax-highlight .token.keyword { 
+    color: hsl(355, 70%, 60%); 
+  }
+  
+  .syntax-highlight .token.function { 
+    color: hsl(275, 70%, 75%); 
+  }
+  
+  .syntax-highlight .token.property { 
+    color: hsl(207, 82%, 66%); 
+  }
+
+  /* Custom scrollbar */
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: hsl(var(--editor-bg));
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background: hsl(var(--editor-border));
+    border-radius: 3px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--editor-hover));
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 focus:ring-offset-editor-bg;
+  }
+
+  /* Interactive states */
+  .interactive-hover {
+    @apply transition-all duration-200 hover:scale-105 hover:shadow-lg;
+  }
+
+  /* Typography */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Utility classes for editor theme */
+.bg-editor-bg { background-color: hsl(var(--editor-bg)); }
+.bg-editor-panel { background-color: hsl(var(--editor-panel)); }
+.bg-editor-hover { background-color: hsl(var(--editor-hover)); }
+.bg-editor-border { background-color: hsl(var(--editor-border)); }
+
+.border-editor-bg { border-color: hsl(var(--editor-bg)); }
+.border-editor-panel { border-color: hsl(var(--editor-panel)); }
+.border-editor-hover { border-color: hsl(var(--editor-hover)); }
+.border-editor-border { border-color: hsl(var(--editor-border)); }
+
+.text-brand-primary { color: hsl(var(--brand-primary)); }
+.text-brand-secondary { color: hsl(var(--brand-secondary)); }
+.text-brand-success { color: hsl(var(--brand-success)); }
+.text-brand-warning { color: hsl(var(--brand-warning)); }
+.text-brand-error { color: hsl(var(--brand-error)); }
+
+.text-text-primary { color: hsl(var(--text-primary)); }
+.text-text-secondary { color: hsl(var(--text-secondary)); }
+.text-text-muted { color: hsl(var(--text-muted)); }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .mobile-stack {
+    @apply flex-col;
+  }
+  
+  .mobile-full {
+    @apply w-full;
+  }
+  
+  .mobile-hide {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-grid {
+    @apply grid-cols-3;
+  }
+  
+  .desktop-spacing {
+    @apply space-x-6;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-after: always;
+  }
+}
